@@ -1,18 +1,27 @@
-## Getting Started
+## Library-Management-System
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+The very start of this 5 man midterm project begins today (Tomorrow).
 
-## Folder Structure
+## Current Plans
 
-The workspace contains two folders by default, where:
+- Week1: List Class and class attributes, analyze classes relationships, implement the initial skeleton of the classes
+- Week2: Implement the core features, menu, and apply the required OOP concepts. Plus Validation, error handling and Extra features if there's time.
+- Week3: Extra features and testing. Then we start documentation and presentation slides.
+- Week4: Continue with documentation and polishing plus presentation practice.
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+## Core Features
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+- Add a book (title, author, year)
+- List all books, showing availability status
+- Check out a book (mark as borrowed)
+- Return a book (mark as available)
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+## Extra Features
 
-## Dependency Management
+- Search by title or author
+- due dates and late fees
+- track who borrowed which book
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+## File Structure
+
+Still figuring it out.
