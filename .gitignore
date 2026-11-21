@@ -1,2 +1,2 @@
 # Ignore the bin files
-bin/
+bin/*
