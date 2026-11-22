@@ -1,27 +1,26 @@
-package Class;
+package classEntity;
 
 public class Book {
     private int id;
     private String title;
     private String author;
     private int year;
-    private String status;
-    private static int autoId = 1;
+    private boolean status;
 
     public Book() {
         this.id = 0;
         this.title = "Unknown";
         this.author = "Unknown";
         this.year = 0;
-        this.status = "Not set";
+        this.status = false;
     }
 
-    public Book(String title, String author, int year) {
-        this.id = autoId++;
+    public Book(int id, String title, String author, int year) {
+        this.id = id;
         this.title = title;
         this.author = author;
         this.year = year;
-        this.status = "Available";
+        this.status = true;
     }
 
     public int getId() {
@@ -53,12 +52,15 @@ public class Book {
     }
 
     public String getStatus() {
-        return status;
+        if (status == true) {
+            return "Available";
+        }
+        else {
+            return "Borrowed";
+        }
     }
 
-    public void setStatus(String status) {
+    public void setStatus(boolean status) {
         this.status = status;
     }
-    
-    
 }

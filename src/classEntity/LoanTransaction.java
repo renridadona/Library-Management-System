@@ -1,4 +1,4 @@
-package Class;
+package classEntity;
 
 import java.time.LocalDate;
 
@@ -10,7 +10,6 @@ public class LoanTransaction {
     private LocalDate dateLoaned;
     private LocalDate dateDue;
     private LocalDate dateReturned;
-    private static int autoId = 1;
 
     public LoanTransaction() {
         this.id = 0;
@@ -22,8 +21,8 @@ public class LoanTransaction {
         this.dateReturned = null;
     }
 
-    public LoanTransaction(Book bookloan, User borrower, Staff assignedLender) {
-            this.id = autoId++;
+    public LoanTransaction(int id, Book bookloan, User borrower, Staff assignedLender) {
+            this.id = id;
             this.bookLoan = bookloan;
             this.borrower = borrower;
             this.assignedLender = assignedLender;
@@ -32,9 +31,9 @@ public class LoanTransaction {
             this.dateReturned = null;
     }
 
-    public LoanTransaction(Book bookloan, User borrower, Staff assignedLender, 
+    public LoanTransaction(int id, Book bookloan, User borrower, Staff assignedLender, 
             LocalDate dateLoaned, LocalDate dateDue) {
-        this.id = autoId++;
+        this.id = id;
         this.bookLoan = bookloan;
         this.borrower = borrower;
         this.assignedLender = assignedLender;
@@ -92,5 +91,9 @@ public class LoanTransaction {
 
     public void setDateReturned(LocalDate dateReturned) {
         this.dateReturned = dateReturned;
+    }
+
+    public boolean isReturned() {
+        return dateReturned != null;
     }
 }

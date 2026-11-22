@@ -1,11 +1,12 @@
 ## Library-Management-System
 
-The very start of this 5 man midterm project begins today (Tomorrow).
+Starting alone btw, team busy heal. Have not tested yet cause just done everything but the Main class.
 
 ## Current Plans
 
 - Week1: List Class and class attributes, analyze classes relationships, implement the initial skeleton of the classes [X]
 - Week2: Implement the core features, menu, and apply the required OOP concepts. Plus Validation, error handling and Extra features if there's time.
+    - Implement file management for perminent storage
 - Week3: Extra features and testing. Then we start documentation and presentation slides.
 - Week4: Continue with documentation and polishing plus presentation practice.
 
@@ -21,10 +22,6 @@ The very start of this 5 man midterm project begins today (Tomorrow).
 - Search by title or author
 - due dates and late fees
 - track who borrowed which book
-
-## File Structure
-
-Still figuring it out.
 
 ## Class Relationships
 
@@ -54,7 +51,6 @@ classDiagram
         -String year
         -int year
         -boolean isAvailable
-        -static int autoId
     }
     class User {
         -int id
@@ -62,10 +58,8 @@ classDiagram
         -String gender
         -int age
         -String phone
-        -List~LoanTransaction~ loans
         +getLoanperiod() Duration
         +getMaxBooks() int
-        +getLoanHistory()
     }
     class Staff {
         -LocalDateTime hiredDate
@@ -88,7 +82,6 @@ classDiagram
         -LocalDate dateLoaned
         -LocalDate dateDue
         -LocalDate dateReturned
-        -static int autoId
     }
     Library *-- Book
     Library *-- LoanTransaction
@@ -100,3 +93,9 @@ classDiagram
     LoanTransaction --> Staff
     LoanTransaction --> User
 ```
+
+## File Management
+
+Currently implementing a file manager to handle file saves and loads for each objects so it can have some perminent storage. 
+
+It does get annoying whenever you try to input everything again after restarting the application. Wouldn't be a system if it can't remember anything.

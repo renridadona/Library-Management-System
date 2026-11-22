@@ -1,7 +1,8 @@
-package Class;
+package classEntity;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class Staff extends User {
     private LocalDateTime hiredDate;
@@ -47,11 +48,21 @@ public class Staff extends User {
         this.salary = salary;
     }
 
+    @Override String getType() { return "STAFF"; }
+
     @Override public Duration getLoanPeriod(){
         return Duration.ofDays(14);
     }
 
     @Override public int getMaxBooks(){
         return 5;
+    }
+
+    @Override public List<String> toFields(){
+        List<String> f = super.toFields();
+        f.add(hiredDate.toString());
+        f.add(position);
+        f.add(String.valueOf(salary));
+        return f;
     }
 }

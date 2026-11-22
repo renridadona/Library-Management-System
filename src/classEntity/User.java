@@ -1,4 +1,4 @@
-package Class;
+package classEntity;
 
 import java.time.Duration;
 import java.util.ArrayList;
@@ -10,7 +10,6 @@ public abstract class User {
     private String gender;
     private int age;
     private String phone;
-    private final List<LoanTransaction> loans = new ArrayList<>();
 
     public User() {
         this.id = 0;
@@ -56,6 +55,14 @@ public abstract class User {
         this.phone = phone;
     }
 
+    String getType() { return "USER"; }
+
     public abstract Duration getLoanPeriod();
     public abstract int getMaxBooks();
+
+    public List<String> toFields() {
+        return new ArrayList<>(List.of(
+            getType(), String.valueOf(id), name, gender, String.valueOf(age), phone
+        ));
+    }
 }
