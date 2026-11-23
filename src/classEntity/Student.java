@@ -1,6 +1,5 @@
 package classEntity;
 
-import java.time.Duration;
 import java.util.List;
 
 public class Student extends User {
@@ -37,8 +36,8 @@ public class Student extends User {
 
     @Override String getType() { return "STUDENT"; }
 
-    @Override public Duration getLoanPeriod(){
-        return Duration.ofDays(7);
+    @Override public long getLoanPeriod(){
+        return 7;
     }
 
     @Override public int getMaxBooks(){
@@ -50,5 +49,9 @@ public class Student extends User {
         f.add(course);
         f.add(String.valueOf(year));
         return f;
+    }
+
+    @Override public String toString() {
+        return super.toString() + " | " + getCourse() + " | " + getYear();
     }
 }

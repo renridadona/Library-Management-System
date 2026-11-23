@@ -4,9 +4,9 @@ Starting alone btw, team busy heal. Have not tested yet cause just done everythi
 
 ## Current Plans
 
-- Week1: List Class and class attributes, analyze classes relationships, implement the initial skeleton of the classes [X]
-- Week2: Implement the core features, menu, and apply the required OOP concepts. Plus Validation, error handling and Extra features if there's time.
-    - Implement file management for perminent storage
+- Week1: List Class and class attributes, analyze classes relationships, implement the initial skeleton of the classes (Completed)
+- Week2: Implement the core features, menu, and apply the required OOP concepts. Plus Validation, error handling and Extra features if there's time. (In progress)
+    - Implement file management for perminent storage (Completed)
 - Week3: Extra features and testing. Then we start documentation and presentation slides.
 - Week4: Continue with documentation and polishing plus presentation practice.
 
@@ -96,6 +96,9 @@ classDiagram
 
 ## File Management
 
-Currently implementing a file manager to handle file saves and loads for each objects so it can have some perminent storage. 
+File handling has been inplemented in the application. It's probably the simplest one you can make but I sure am proud of it.
+It creates three files to store the most important lists (books, users and transactions) and saves the object properties inside a .txt file.
 
-It does get annoying whenever you try to input everything again after restarting the application. Wouldn't be a system if it can't remember anything.
+When the application starts, it will load each file back into the list so you keep all of your data for the next restart. 
+
+Because we have not implement any menu inside `Main()`, we have tested it with a few method calls.

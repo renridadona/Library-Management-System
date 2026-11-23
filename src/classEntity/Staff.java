@@ -1,11 +1,10 @@
 package classEntity;
 
-import java.time.Duration;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 public class Staff extends User {
-    private LocalDateTime hiredDate;
+    private LocalDate hiredDate;
     private String position;
     private double salary;
 
@@ -17,18 +16,18 @@ public class Staff extends User {
     }
     
     public Staff(int id, String name, String gender, int age, String phone, 
-            LocalDateTime hiredDate, String position, double salary) {
+            LocalDate hiredDate, String position, double salary) {
         super(id, name, gender, age, phone);
         this.hiredDate = hiredDate;
         this.position = position;
         this.salary = salary;
     }
 
-    public LocalDateTime getHiredDate() {
+    public LocalDate getHiredDate() {
         return hiredDate;
     }
 
-    public void setHiredDate(LocalDateTime hiredDate) {
+    public void setHiredDate(LocalDate hiredDate) {
         this.hiredDate = hiredDate;
     }
 
@@ -50,8 +49,8 @@ public class Staff extends User {
 
     @Override String getType() { return "STAFF"; }
 
-    @Override public Duration getLoanPeriod(){
-        return Duration.ofDays(14);
+    @Override public long getLoanPeriod(){
+        return 14;
     }
 
     @Override public int getMaxBooks(){
@@ -64,5 +63,9 @@ public class Staff extends User {
         f.add(position);
         f.add(String.valueOf(salary));
         return f;
+    }
+
+    @Override public String toString() {
+        return super.toString() + " | " + getHiredDate() + " | " + getPosition() + " | " + getSalary();
     }
 }

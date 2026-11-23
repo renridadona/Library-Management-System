@@ -1,6 +1,7 @@
 package classEntity;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -28,12 +29,12 @@ public class Library {
         this.yearEst = 0;
     }
     
-    public Library(int id, String name, String location, String contactNumber, int capacity, int yearEst) {
+    public Library(int id, String name, String location, String contactNumber, int yearEst) {
         this.id = id;
         this.name = name;
         this.location = location;
         this.contactNumber = contactNumber;
-        this.capacity = capacity;
+        this.capacity = 0;
         this.yearEst = yearEst;
     }
 
@@ -81,6 +82,14 @@ public class Library {
         this.yearEst = yearEst;
     }
 
+    public int getNextBookId() {
+        return nextBookId;
+    }
+
+    public int getNextLoanTransactionId() {
+        return nextLoanTransactionId;
+    }
+
     public Book findBook(int id) {
         for (Book b : books) if (b.getId() == id) return b;
         return null;
@@ -96,29 +105,50 @@ public class Library {
         return (u instanceof Staff s) ? s : null;
     }
 
-    boolean addBooks(Book b) {
+    public void lendBook(Book bookloan, User borrower, Staff assignedLender) {
+        if (bookloan.getStatusBool() == false){
+            return;
+        }
+        addLoans(new LoanTransaction(nextLoanTransactionId, bookloan, borrower, assignedLender, 
+                LocalDate.now(), LocalDate.now().plusDays(borrower.getLoanPeriod())));
+        bookloan.setStatus(false);
+    }
+
+    public void returnBook(int id) {
+        for (LoanTransaction t : transactions) 
+            if (t.getBookLoan().getId() == id && t.getDateReturned() == null) {
+                t.setDateReturned(LocalDate.now());
+                t.getBookLoan().setStatus(true);
+            }
+    }
+
+    public boolean addBooks(Book b) {
         if (findBook(b.getId()) != null) return false;
         books.add(b);
-        if (b.getId() >= nextBookId) nextBookId = b.getId() + 1;
+        capacity++;
+        if (b.getId() >= nextBookId) 
+            nextBookId = b.getId() + 1;
         return true;
     }
 
-    boolean addUser(User u) {
-        if (findBook(u.getId()) != null) return false;
+    public boolean addUser(User u) {
+        if (findUser(u.getId()) != null) return false;
         users.add(u);
         return true;
     }
 
-    // will add object validation later
-    void addLoans(LoanTransaction t) {
+    public void addLoans(LoanTransaction t) {
         transactions.add(t);
-        if (t.getId() >= nextLoanTransactionId) nextLoanTransactionId = t.getId() + 1;
+        if (t.getId() >= nextLoanTransactionId) 
+            nextLoanTransactionId = t.getId() + 1;
     }
 
-    List<Book> getBooks() { return Collections.unmodifiableList(books); }
-    List<User> getUsers() { return Collections.unmodifiableList(users); }
-    List<LoanTransaction> getLoans() { return Collections.unmodifiableList(transactions); }
+    public List<Book> getBooks() { return Collections.unmodifiableList(books); }
+    public List<User> getUsers() { return Collections.unmodifiableList(users); }
+    public List<LoanTransaction> getLoans() { return Collections.unmodifiableList(transactions); }
 
-    void load() throws IOException {  }
-    void save() throws IOException {  }
+    public void load() throws IOException { FileManager.load(this); }
+    public void save() throws IOException { FileManager.save(this); }
+
+
 }

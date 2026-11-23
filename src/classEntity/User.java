@@ -1,6 +1,5 @@
 package classEntity;
 
-import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -57,12 +56,16 @@ public abstract class User {
 
     String getType() { return "USER"; }
 
-    public abstract Duration getLoanPeriod();
+    public abstract long getLoanPeriod();
     public abstract int getMaxBooks();
 
     public List<String> toFields() {
         return new ArrayList<>(List.of(
             getType(), String.valueOf(id), name, gender, String.valueOf(age), phone
         ));
+    }
+
+    @Override public String toString() {
+        return getId() + " | " + getName() + " | " + getGender() + " | " + getAge() + " | " + getPhone();
     }
 }

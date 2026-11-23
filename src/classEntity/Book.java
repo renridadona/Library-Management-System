@@ -15,12 +15,12 @@ public class Book {
         this.status = false;
     }
 
-    public Book(int id, String title, String author, int year) {
+    public Book(int id, String title, String author, int year, boolean status) {
         this.id = id;
         this.title = title;
         this.author = author;
         this.year = year;
-        this.status = true;
+        this.status = status;
     }
 
     public int getId() {
@@ -60,7 +60,15 @@ public class Book {
         }
     }
 
+    public boolean getStatusBool() {
+        return status;
+    }
+
     public void setStatus(boolean status) {
         this.status = status;
+    }
+
+    @Override public String toString(){
+        return getId() + " | " + getTitle() + " | " + getAuthor() + " | " + getYear() + " | " + getStatus();
     }
 }

@@ -27,7 +27,7 @@ public class LoanTransaction {
             this.borrower = borrower;
             this.assignedLender = assignedLender;
             this.dateLoaned = LocalDate.now();
-            this.dateDue = LocalDate.now().plus(borrower.getLoanPeriod());
+            this.dateDue = LocalDate.now().plusDays(borrower.getLoanPeriod());
             this.dateReturned = null;
     }
 
@@ -95,5 +95,10 @@ public class LoanTransaction {
 
     public boolean isReturned() {
         return dateReturned != null;
+    }
+
+    @Override
+    public String toString() {
+        return getId() + " | " + getBookLoan().getTitle() + " | " + getBorrower().getName() + " | " + getAssignedLender().getName() + " | " + getDateLoaned() + " | " + getDateDue() + " | " + getDateReturned();
     }
 }
